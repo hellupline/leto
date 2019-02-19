@@ -25,6 +25,10 @@ func New(files Files) *FileSystem {
 	return &FileSystem{Files: files}
 }
 
+func Default() *FileSystem {
+	return defaultFileSystem
+}
+
 func (fs *FileSystem) Open(name string) (http.File, error) {
 	f, present := fs.Files[path.Clean(name)]
 	if !present {
